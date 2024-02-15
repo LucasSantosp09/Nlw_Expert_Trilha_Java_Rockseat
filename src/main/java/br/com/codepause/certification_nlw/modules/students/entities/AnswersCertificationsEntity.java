@@ -1,7 +1,13 @@
 package br.com.codepause.certification_nlw.modules.students.entities;
 
-import java.util.UUID;
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 
+import java.util.UUID;
+@Data
+@AllArgsConstructor
+@NoArgsConstructor
 public class AnswersCertificationsEntity {
 
     private UUID id;
