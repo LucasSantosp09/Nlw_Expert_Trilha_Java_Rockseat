@@ -1,6 +1,8 @@
 package br.com.codepause.certification_nlw.modules.students.controllers;
 
 import br.com.codepause.certification_nlw.modules.students.dto.VerifyHasCertificationDTO;
+import br.com.codepause.certification_nlw.modules.students.entities.CertificationStudentEntity;
+import br.com.codepause.certification_nlw.modules.students.repository.CertificationStudentEntityRepository;
 import br.com.codepause.certification_nlw.modules.students.useCases.VerifyIfHasCertificationUseCase;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PostMapping;
