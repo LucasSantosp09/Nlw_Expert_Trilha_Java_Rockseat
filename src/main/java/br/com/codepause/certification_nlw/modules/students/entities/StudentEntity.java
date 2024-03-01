@@ -18,8 +18,9 @@ public class StudentEntity {
     @GeneratedValue(strategy = GenerationType.UUID)
     private UUID id;
 
-    @Column (unique = true, nullable = false)
+    @Column (unique = true, nullable = false, length = 100)
     private String email;
 
-    //private List<CertificationStudentEntity> certificationStudentEntities;
+    @OneToMany(mappedBy = "studentEntity")
+    private List<CertificationStudentEntity> certificationStudentEntities;
 }
