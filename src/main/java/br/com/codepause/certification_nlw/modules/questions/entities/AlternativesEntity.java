@@ -13,21 +13,23 @@ import java.util.UUID;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
+@Entity(name = "alternatives")
 
-@Entity(name = "questions")
-public class QuestionEntity {
+public class AlternativesEntity {
 
     @Id
-    @GeneratedValue( strategy = GenerationType.UUID)
+    @GeneratedValue(strategy = GenerationType.UUID)
     private UUID id;
-
-    @Column(length = 50)
-    private String technology;
 
     private String description;
 
+    private boolean isCorrect;
+
+    @OneToMany
+    @JoinColumn(name = "question_id")
     private List<AlternativesEntity> alternatives;
 
     @CreationTimestamp
-    private LocalDateTime createdAt;
+    private LocalDateTime createAt;
+
 }
