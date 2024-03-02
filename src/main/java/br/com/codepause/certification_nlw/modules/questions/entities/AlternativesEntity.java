@@ -14,7 +14,6 @@ import java.util.UUID;
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity(name = "alternatives")
-
 public class AlternativesEntity {
 
     @Id
@@ -25,9 +24,6 @@ public class AlternativesEntity {
 
     private boolean isCorrect;
 
-    @OneToMany
-    @JoinColumn(name = "question_id")
-    private List<AlternativesEntity> alternatives;
 
     @CreationTimestamp
     private LocalDateTime createAt;

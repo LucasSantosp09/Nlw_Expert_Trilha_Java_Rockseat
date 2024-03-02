@@ -26,6 +26,8 @@ public class QuestionEntity {
 
     private String description;
 
+    @OneToMany
+    @JoinColumn(name = "question_id")
     private List<AlternativesEntity> alternatives;
 
     @CreationTimestamp
