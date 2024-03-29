@@ -15,6 +15,5 @@ public class StudentCertificationAnswerDTO {
 
     private String email;
     private String technology;
-
     private List<QuestionsAnswerDTO>questionsAnswerDTOS;
 }
