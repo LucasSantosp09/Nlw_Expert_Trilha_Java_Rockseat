@@ -13,18 +13,9 @@ import java.util.List;
 public class StudentCertificationAnswersUseCase {
 
     @Autowired
-    private StudentRepository studentRepository;
-
-    @Autowired
     private QuestionRepository questionRepository;
 
-public StudentCertificationAnswerDTO execute(StudentCertificationAnswerDTO dto) throws Exception {
- //Verifica se usuário existe
-    var student = studentRepository.findByEmail(dto.getEmail());
-
-    if (student.isEmpty()){
-        throw new Exception("E-mail do estudante incorreto.");
-    }
+public StudentCertificationAnswerDTO execute(StudentCertificationAnswerDTO dto)  {
 
  //Buscar as alternativas das perguntas
  //correta ou incorreta
