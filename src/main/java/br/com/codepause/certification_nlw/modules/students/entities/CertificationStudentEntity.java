@@ -30,11 +30,12 @@ public class CertificationStudentEntity {
     @Column(length = 10)
     private int grade;
 
-    @JoinColumn(name = "student_id")
+    @Column(name = "student_id")
     private UUID studentID;
 
     @ManyToOne
     @JoinColumn(name = "student_id", insertable = false, updatable = false)
+    @JsonBackReference
     private StudentEntity studentEntity;
 
     @CreationTimestamp

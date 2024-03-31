@@ -12,7 +12,7 @@ public class VerifyIfHasCertificationUseCase {
     CertificationStudentEntityRepository certificationStudentEntityRepository;
     public boolean execute(VerifyHasCertificationDTO dto){
         var result = this.certificationStudentEntityRepository.findByStudentEmailAndTechnology(dto.getEmail(), dto.getTechnology());
-        if(result.isEmpty()){
+        if(!result.isEmpty()){
             return true;
         }
         return false;
