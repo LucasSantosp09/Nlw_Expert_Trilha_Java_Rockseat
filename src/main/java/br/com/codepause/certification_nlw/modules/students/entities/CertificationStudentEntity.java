@@ -1,7 +1,10 @@
 package br.com.codepause.certification_nlw.modules.students.entities;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import org.hibernate.annotations.CreationTimestamp;
@@ -14,6 +17,7 @@ import java.util.UUID;
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity(name="certifications")
+@Builder
 public class CertificationStudentEntity {
 
     @Id
@@ -36,8 +40,9 @@ public class CertificationStudentEntity {
     @CreationTimestamp
     private LocalDateTime createdAt;
 
-    @OneToMany
+    @OneToMany(cascade = CascadeType.ALL)
     @JoinColumn(name = "answer_certification_id")
+    @JsonManagedReference
     List<AnswersCertificationsEntity> answersCertificationsEntities;
 
 }
