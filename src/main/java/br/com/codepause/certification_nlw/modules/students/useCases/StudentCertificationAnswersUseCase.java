@@ -3,6 +3,7 @@ package br.com.codepause.certification_nlw.modules.students.useCases;
 import br.com.codepause.certification_nlw.modules.questions.entities.QuestionEntity;
 import br.com.codepause.certification_nlw.modules.questions.repository.QuestionRepository;
 import br.com.codepause.certification_nlw.modules.students.dto.StudentCertificationAnswerDTO;
+import br.com.codepause.certification_nlw.modules.students.dto.VerifyHasCertificationDTO;
 import br.com.codepause.certification_nlw.modules.students.entities.AnswersCertificationsEntity;
 import br.com.codepause.certification_nlw.modules.students.entities.CertificationStudentEntity;
 import br.com.codepause.certification_nlw.modules.students.entities.StudentEntity;
@@ -26,8 +27,16 @@ public class StudentCertificationAnswersUseCase {
     @Autowired
     private CertificationStudentEntityRepository certificationStudentEntityRepository;
 
-public CertificationStudentEntity execute(StudentCertificationAnswerDTO dto)  {
+    @Autowired
+    private VerifyIfHasCertificationUseCase verifyIfHasCertificationUseCase;
 
+public CertificationStudentEntity execute(StudentCertificationAnswerDTO dto) throws Exception {
+
+    var hasCertification = this.verifyIfHasCertificationUseCase.execute(new VerifyHasCertificationDTO(dto.getEmail(),dto.getTechnology() ));
+
+    if (hasCertification){
+        throw  new Exception("Você já tirou sua certificação");
+    }
  //Buscar as alternativas das perguntas
  //correta ou incorreta
     List<QuestionEntity> questionsEntities = questionRepository.findByTechnology(dto.getTechnology());
